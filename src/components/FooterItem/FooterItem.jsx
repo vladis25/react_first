@@ -5,11 +5,8 @@ const FooterItem = (props) => {
   
     let textToRender;
 
-    if(isLowercaseText){
-        textToRender = text.toLowerCase();
-    }else{
-       textToRender = text;
-    }
+    isLowercaseText ? textToRender = text.toLowerCase() : textToRender = text;
+    
     return (
         <div>{ textToRender }</div>
     )
