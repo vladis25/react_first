@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import RegistrationForm from '../RegistrationForm/RegistrationForm';
 
 import './main.css'
 
@@ -33,6 +34,7 @@ const Main = () => {
         setResult(-firstInput - -secondInput)
     }
 
+    
     return (
         <div className='main'>
             {/* <button onClick={onPlusNumberHandler} type='button'>Plus one</button>
@@ -44,7 +46,13 @@ const Main = () => {
             <button onClick={onMinusHandler} type='button'>-</button>
             <input type="number" onChange={(event) => onChangeSecondInputHandler(event.target.value)}/>
             <div>{ result }</div>
+
+            <div className='form'>
+                <RegistrationForm/>   
+            </div>
+                
         </div>
+
     )
     
 

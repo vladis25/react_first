@@ -1,4 +1,5 @@
 .main {
     display: table-row;
     height: 100%;
+    margin: 0 auto;
 }
