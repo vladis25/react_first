@@ -1,4 +1,4 @@
-import RegistrationPage from '../RegistrationPage/RegistrationPage';
+// import RegistrationPage from '../RegistrationPage/RegistrationPage';
 import AddProductForm from '../AddProductForm/AddProductForm';
 
 
@@ -9,7 +9,6 @@ const Main = () => {
     
     return (
         <div className='main'>
-                <RegistrationPage/>   
                  <AddProductForm />
         </div>
 

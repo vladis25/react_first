@@ -1,0 +1,19 @@
+.container {
+    display: inline-block;
+    margin: 0 auto;
+    align-items: center;
+}
+.form {
+    display: table-caption;
+    text-align: left;
+
+}
+.name>label{
+    width: 100%;
+    margin: 5px 0;
+}
+
+.list li{
+    list-style-type: none;
+
+}

@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import Button from '../Button/Button';
-import Input from '../Input';
 
 import './addProductForm.css';
 
@@ -10,6 +8,7 @@ const AddProductForm = () => {
     name: '',
     price: '',
     imageUrl: '',
+    category: '',
   });
 
   const [products, setProducts] = useState([]);
@@ -21,41 +20,68 @@ const AddProductForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!product.name || !product.price || !product.imageUrl) {
-      alert('Заповніть всі поля товару.');
+    if (!product.name || !product.price || !product.imageUrl || !product.category) {
+      alert('Будь ласка, заповніть всі поля товару.');
       return;
     }
 
     const newProductId = new Date().getTime().toString();
-
     setProducts([...products, { ...product, id: newProductId }]);
-
-    setProduct({ id: '', name: '', price: '', imageUrl: '' });
+    setProduct({ id: '', name: '', price: '', imageUrl: '', category: '' });
   };
 
   return (
-    <div>
-      <h2>Форма додавання товару</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <Input label='Назва товару:' type="text" name="name" value={product.name} onChange={handleInputChange} />
+    <div className='container'>
+      <form onSubmit={handleSubmit} className='form'>
+        <div className='name'>
+          <label>Назва товару:</label>
+          <input type="text" name="name" value={product.name} onChange={handleInputChange} />
         </div>
-        <div>
-          <Input name="price" label="Ціна товару: " placeholder="Enter Price" onChange={handleInputChange} value={product.price} />
+        <div className='name'>
+          <label>Ціна товару:</label>
+          <input type="text" name="price" value={product.price} onChange={handleInputChange} />
         </div>
-        <div>
-          <Input label='URL зображення:' type="text" name="imageUrl" value={product.imageUrl} onChange={handleInputChange} />
+        <div className='name'>
+          <label>URL зображення:</label>
+          <input type="text" name="imageUrl" value={product.imageUrl} onChange={handleInputChange} />
         </div>
-        <Button variant='primary' type="submit">Додати товар</Button>
+        <div >
+          <label>Категорія товару:</label>
+          <div>
+            <label>
+              <input
+                type="radio"
+                name="category"
+                value="electronics"
+                checked={product.category === 'electronics'}
+                onChange={handleInputChange}
+              />
+              Електроніка
+            </label>
+          </div>
+          <div>
+            <label>
+              <input
+                type="radio"
+                name="category"
+                value="clothing"
+                checked={product.category === 'clothing'}
+                onChange={handleInputChange}
+              />
+              Одяг
+            </label>
+          </div>
+        </div>
+        <button type="submit">Додати товар</button>
       </form>
 
       <div>
         <h3>Список товарів</h3>
-        <ul>
+        <ul className='list'>
           {products.map((p) => (
             <li key={p.id}>
               <img src={p.imageUrl} alt={p.name} style={{ maxWidth: '100px', maxHeight: '100px' }} />
-              {p.name} - {p.price}
+              {p.name} - {p.price}$ - {p.category}
             </li>
           ))}
         </ul>
