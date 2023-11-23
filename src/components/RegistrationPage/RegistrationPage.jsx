@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Input from "../Input";
 import UserCard from "../UserCard/UserCard";
 import Button from "../Button"
+import { UsersContext } from "../../App";
 
 import { v4 as uuidv4 } from 'uuid';
 
@@ -36,14 +37,22 @@ const DEFAULT_USERS = [
 
 
 const RegistrationPage = () => {
+
+  const {userCount, setUserCount } = useContext(UsersContext);
+
   const [users, setUsers] = useState(DEFAULT_USERS);
   const [isEditMode, setIsEditMode] = useState(false);
+  const [selectedUserId, setSelectedUserId] = useState();
+  
+  setUserCount(users.length);
 
-  console.log(users)
-
+  console.log(userCount)
+  
+  
   const [name, setName] = useState();
   const [surname, setSurname] = useState();
   const [email, setEmail] = useState();
+  
 
   const onAddUser = () => {
     const user = {
@@ -58,6 +67,7 @@ const RegistrationPage = () => {
     setSurname("");
     setEmail("");
   };
+
 
   const onGetName = (value) => {
     setName(value);
@@ -77,13 +87,38 @@ const RegistrationPage = () => {
   
   }
 
-  const onUpdateUserHandler = (id) => {
+  const onSaveUserHandler = (id) => {
     const currentUser = users.filter((user) => user.id === id)[0];
     setName(currentUser.name);
     setSurname(currentUser.surname);
     setEmail(currentUser.email);
     console.log(currentUser)
   }
+    const onUpdateUserHandler = () => {
+    const updatedUsers = users.map((user) => {
+      if (user.id === selectedUserId) {
+        return {
+          ...user,
+          name,
+          surname,
+          email,
+        };
+      }
+      return user;
+    });
+
+    setUsers(updatedUsers);
+    setIsEditMode(false);
+    clearInputs();
+  };
+
+  const clearInputs = () => {
+    setName("");
+    setSurname("");
+    setEmail("");
+    setIsEditMode(false);
+    setSelectedUserId(null);
+  };
 
   return (
     <div className={styles["common"]}>
@@ -106,17 +141,16 @@ const RegistrationPage = () => {
           onChangeFunction={onGetEmail}
           value={email}
         />
-        {
-          isEditMode ? (
-            <Button type="button" onClick={onUpdateUserHandler} variant='green'>
-              Update User
-            </Button>
-          ) : (
-            <Button type="button" onClick={onAddUser} variant='primary'>
-               Add User
-            </Button>
-          )
-        }
+        {isEditMode ? (
+          <Button type="button" onClick={onUpdateUserHandler} variant="green">
+            Update User
+          </Button>
+        ) : (
+          <Button type="button" onClick={onAddUser} variant="primary">
+            Add User
+          </Button>
+        )}
+        
       </div>
       <div className={styles["right-side"]}>
         <div className={styles["users-list"]}>
@@ -130,6 +164,7 @@ const RegistrationPage = () => {
                 email={email}
 				        id={id}
                 onClickDeleteBtn={onDeleteUserHandler}
+                onClickSaveBtn={onSaveUserHandler}
                 onClickUpdateBtn={onUpdateUserHandler}
               />
             );

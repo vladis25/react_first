@@ -21,3 +21,6 @@
   display: flex;
   padding-left: 50px;
 }
+.leftSideClassName {
+  border: 1px solid red;;
+}
