@@ -8,6 +8,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 import styles from "./registrationPage.module.css";
 
+
+
 const DEFAULT_USERS = [
   {
       name: 'John',
@@ -36,6 +38,7 @@ const DEFAULT_USERS = [
 ]
 
 
+
 const RegistrationPage = () => {
 
   const {userCount, setUserCount } = useContext(UsersContext);
@@ -44,7 +47,6 @@ const RegistrationPage = () => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState();
   
-  setUserCount(users.length);
 
   console.log(userCount)
   
@@ -82,10 +84,28 @@ const RegistrationPage = () => {
   };
 
   const onDeleteUserHandler = (id) => {
-    console.log(id)
     setUsers(users.filter((user) => user.id !== id));
   
   }
+  //знаходимо найдовше ім`я
+  //____________________________________
+  const findLongestName = () => {
+  if (users.length === 0) {
+    return null; // Якщо користувачів немає, повертаємо null
+  }
+
+  const longestNameUser = users.reduce((maxUser, currentUser) => {
+    // Порівнюємо імена
+    return currentUser.name.length > maxUser.name.length ? currentUser : maxUser;
+  }, users[0]); // Використовуємо першого користувача як початкове значення
+
+  return longestNameUser;
+  };
+
+  const longestNameUser = findLongestName();
+  setUserCount(longestNameUser ? longestNameUser.name : "No users");
+
+//________________________________________
 
   const onSaveUserHandler = (id) => {
     const currentUser = users.filter((user) => user.id === id)[0];
@@ -150,6 +170,8 @@ const RegistrationPage = () => {
             Add User
           </Button>
         )}
+
+        
         
       </div>
       <div className={styles["right-side"]}>

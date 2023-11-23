@@ -15,7 +15,7 @@ const Footer = () => {
             <FooterItem text="Про Нас" isLowercaseText={true}/>
             <FooterItem text="Загальні питання" isLowercaseText={true}/>
             <FooterItem text="Політика конфіденційності" isLowercaseText={true}/>
-        <div>UserCount: {userCount}</div>
+        <div>Longest Name User: {userCount}</div>
         </div>
     </footer>
     )

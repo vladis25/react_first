@@ -43,7 +43,7 @@ const Header = () => {
                     />
                     )
                 })}
-                <div>UserCount: {userCount}</div>
+                <div>Longest Name User: {userCount}</div>
         </div>
     </header>
     )

@@ -13,8 +13,8 @@ const UserCard = ({
 
 	return (
 		<div className='common-user-card'>
-			<div>{ `Name : ${name}` }</div>
-			<div>{ `Surname : ${surname}` }</div>
+			<div className='upper'>{ `Name : ${name}` }</div>
+			<div className='upper'>{ `Surname : ${surname}` }</div>
 			<div>{ `Email : ${email}` }</div>
 			<Button variant='primary' onClick={() => {onClickUpdateBtn(id)}}>update user</Button>
 			<Button variant='secondary' onClick={() => {onClickSaveBtn(id)}}>save user</Button>
