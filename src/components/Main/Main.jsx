@@ -1,6 +1,7 @@
-import RegistrationPage from '../RegistrationPage/RegistrationPage';
+// import RegistrationPage from '../RegistrationPage/RegistrationPage';
 // import AddProductForm from '../AddProductForm/AddProductForm';
-
+import Product from '../Products';
+import Coctails from '../Coctails';
 
 import './main.css'
 
@@ -8,8 +9,12 @@ const Main = () => {
 
     return (
         <div className='main'>
-                 {/* <AddProductForm /> */}
-                 <RegistrationPage />
+            <div className='main-wrapper'>
+                {/* <Product /> */}
+                <Coctails />
+                {/* <AddProductForm /> */}
+                {/* <RegistrationPage /> */}
+            </div>
         </div>
     )
 }

@@ -1,9 +1,9 @@
 .common-user-card {
+  display: inline-table;
+  margin: 0 auto;
   border: 1px solid silver;
-  height: 200px;
-  width: 180px;
+  max-width: 20%; 
   padding: 20px 10px;
-  display: flex;
   flex-direction: column;
   text-align: center;
   justify-content: space-around;
@@ -11,6 +11,15 @@
   margin-bottom: 20px;
   background-color: #908686;
 }
-.upper {
+img {
+  width: 200px;
+}
+.upper{
   text-transform: capitalize;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-family: serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: blue;
 }

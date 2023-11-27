@@ -9,7 +9,7 @@ import Main from './components/Main';
 export const UsersContext = createContext();
 
 const App = () => {
-const [userCount, setUserCount] = useState(0);
+const [userCount, setUserCount] = useState('');
 
   return (
     <UsersContext.Provider value={{userCount, setUserCount}}>
