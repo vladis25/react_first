@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 
+import Input from '../Input';
+import Button from '../Button';
 import './registrationForm.css';
 
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
     email: '',
-    userName: '',
+    name: '',
     password: '',
     age: '',
   });
+  
 
   const [error, setError] = useState('');
 
@@ -32,24 +35,27 @@ const RegistrationForm = () => {
 
   return (
     <div className='form'>
-      <h2>Форма реєстрації</h2>
       <div>
-        <label>Email:</label>
-        <input type="email" name="email" value={formData.email} onChange={handleInputChange} />
+        <label>Email: 
+          <input label="" placeholder="Email" type="email" value={formData.email} onChangeFunction={handleInputChange} />
+        </label>
       </div>
       <div>
-        <label>Ім'я користувача:</label>
-        <input type="text" name="userName" value={formData.userName} onChange={handleInputChange} />
+        <label>Ім'я користувача:
+          <input label="" placeholder="name user" type="text" value={formData.userName} onChangeFunction={handleInputChange} />
+        </label>
       </div>
       <div>
-        <label>Пароль:</label>
-        <input type="password" name="password" value={formData.password} onChange={handleInputChange} />
+        <label>Пароль: 
+          <input label="" placeholder="password" type="password" value={formData.password} onChangeFunction={handleInputChange} />
+        </label>
       </div>
       <div>
-        <label>Вік:</label>
-        <input type="number" name="age" value={formData.age} onChange={handleInputChange} />
+        <label>Вік:
+          <input label=" " placeholder="age" type="number" value={formData.age} onChangeFunction={handleInputChange} />
+        </label>
       </div>
-      <button onClick={handleSubmit}>Відправити</button>
+      <Button variant="primary" onClick={handleSubmit}>Відправити</Button>
       {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
   );

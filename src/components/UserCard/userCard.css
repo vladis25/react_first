@@ -1,14 +1,14 @@
 .common-user-card {
-  display: inline-table;
-  margin: 0 auto;
+  display: inline-grid;
+  margin: 0 10px 20px 10px;
   border: 1px solid silver;
   max-width: 20%; 
+  width: fit-content;
   padding: 20px 10px;
   flex-direction: column;
   text-align: center;
   justify-content: space-around;
   border-radius: 20px;
-  margin-bottom: 20px;
   background-color: #908686;
 }
 img {

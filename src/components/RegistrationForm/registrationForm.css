@@ -1,6 +1,14 @@
 .form {
-    color: black;
+    display: inline-block;
+    position: relative;
+    background-color: rgb(229, 229, 229);
+    padding: 40px;
+    border-radius: 12px;
+
 }
-.form div {
-    display: inline-grid;
+
+.form div{
+  display: flex;
+  flex-direction: column;
 }
+
