@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import Input from "../Input";
 import UserCard from "../UserCard/UserCard";
 import Button from "../Button"
@@ -7,6 +8,7 @@ import { UsersContext } from "../../App";
 import { v4 as uuidv4 } from 'uuid';
 
 import styles from "./registrationPage.module.css";
+import { HOME_PATH, REF_PATH } from "../../constants/routes-links";
 
 
 
@@ -42,6 +44,8 @@ const DEFAULT_USERS = [
 const RegistrationPage = () => {
 
   const {userCount, setUserCount } = useContext(UsersContext);
+
+  const navigator = useNavigate();
 
   const [users, setUsers] = useState(DEFAULT_USERS);
   const [isEditMode, setIsEditMode] = useState(false);
@@ -89,23 +93,27 @@ const RegistrationPage = () => {
   }
   //знаходимо найдовше ім`я
   //____________________________________
-  const findLongestName = () => {
-  if (users.length === 0) {
-    return null; // Якщо користувачів немає, повертаємо null
-  }
+  // const findLongestName = () => {
+  // if (users.length === 0) {
+  //   return null; // Якщо користувачів немає, повертаємо null
+  // }
 
-  const longestNameUser = users.reduce((maxUser, currentUser) => {
-    // Порівнюємо імена
-    return currentUser.name.length > maxUser.name.length ? currentUser : maxUser;
-  }, users[0]); // Використовуємо першого користувача як початкове значення
+  // const longestNameUser = users.reduce((maxUser, currentUser) => {
+  //   // Порівнюємо імена
+  //   return currentUser.name.length > maxUser.name.length ? currentUser : maxUser;
+  // }, users[0]); // Використовуємо першого користувача як початкове значення
 
-  return longestNameUser;
-  };
+  // return longestNameUser;
+  // };
 
-  const longestNameUser = findLongestName();
-  setUserCount(longestNameUser ? longestNameUser.name : "No users");
+  // const longestNameUser = findLongestName();
+  // setUserCount(longestNameUser ? longestNameUser.name : "No users");
 
 //________________________________________
+// if (users.length > 6) {
+//   navigator(REF_PATH);
+// }  //переводить на іншу сторінку якщо більше 6-ти юзерів
+
 
   const onSaveUserHandler = (id) => {
     const currentUser = users.filter((user) => user.id === id)[0];
@@ -170,8 +178,7 @@ const RegistrationPage = () => {
             Add User
           </Button>
         )}
-
-        
+      <Button variant="secondary" onClick={(() => {navigator(HOME_PATH)})}>go Home</Button>
         
       </div>
       <div className={styles["right-side"]}>

@@ -1,8 +1,9 @@
 import { useContext } from "react";
-import NavigationItem from "../NavigationItem";
 import { UsersContext } from "../../App";
+import { Link } from "react-router-dom"
 
 import './header.css'
+import { HOME_PATH, PRODUCTS_PATH, REF_PATH, REGISTRATION_PATH, SINGLE_USER_PATH } from "../../constants/routes-links";
 
 const Header = () => {
 
@@ -31,9 +32,15 @@ const Header = () => {
 
     return (
     <header>
-
         <div className="header">
-            {navElements.map((element) => {
+        <Link to={HOME_PATH}>Main</Link>
+        <Link to={PRODUCTS_PATH}>Products</Link>
+        <Link to={HOME_PATH}>HomePage</Link>
+        <Link to={REF_PATH}>Ref</Link>
+        <Link to={SINGLE_USER_PATH}>User</Link>
+        <Link to={REGISTRATION_PATH}>Registration</Link>        
+          
+          {/* {navElements.map((element) => {
                 return (
                     <NavigationItem
                         key = {element.text}
@@ -43,7 +50,7 @@ const Header = () => {
                     />
                     )
                 })}
-                <div>Longest Name User: {userCount}</div>
+                <div>Longest Name User: {userCount}</div> */}
         </div>
     </header>
     )

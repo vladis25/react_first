@@ -1,6 +1,10 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import { useParams } from "react-router-dom";
 
 const RefInput = () => {
+
+  const params = useParams(null);
+  console.log(params);
 
   const inputRef =  useRef(null);
   const textRef = useRef('some text')

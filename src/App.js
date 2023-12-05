@@ -7,8 +7,11 @@ import Footer from './components/Footer';
 import Main from './components/Main';
 import Products from "./components/Products";
 import HomePage from "./components/HomePage";
-import RegistrationForm from "./components/RegistrationForm";
 import RegistrationPage from "./components/RegistrationPage";
+import RefInput from "./components/RefInput";
+import NotFoundPage from './components/NotFoundPage';
+import { HOME_PATH, PRODUCTS_PATH, REF_PATH, REGISTRATION_PATH, NOTFOUND_PATH, SINGLE_USER_PATH } from './constants/routes-links';
+import UserPage from './components/userPage/UserPage';
 
 export const UsersContext = createContext();
 
@@ -21,10 +24,12 @@ const [userCount, setUserCount] = useState('');
         <Header />
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/HomePage" element={<HomePage />} />
-          <Route path="/RegistrationForm" element={<RegistrationForm />} />
-          <Route path="/RegistrationPage" element={<RegistrationPage />} />
+          <Route path={PRODUCTS_PATH} element={<Products />} />
+          <Route path={HOME_PATH} element={<HomePage />} />
+          <Route path={REF_PATH} element={<RefInput />} />
+          <Route path={REGISTRATION_PATH} element={<RegistrationPage />} />
+          <Route path={SINGLE_USER_PATH} element={<UserPage />} />
+          <Route path={NOTFOUND_PATH} element={<NotFoundPage />} />
         </Routes>        
         <Footer />
       </div>
